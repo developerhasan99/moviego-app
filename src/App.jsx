@@ -1,14 +1,21 @@
-import { useState } from "react";
 import Header from "./Components/Header";
 import "./App.css";
+import MovieFrame from "./Components/MovieFrame";
+import Searchbar from "./Components/Searchbar";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <>
+      <div className="content_wrapper">
+        <div className="App">
+          <Header />
+          <div className="content_card">
+            <MovieFrame />
+            <Searchbar />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
