@@ -22,15 +22,18 @@ export default function ({ searchValue, setSearchValue }) {
 
     let slicedNames = filterdMovies.slice(0, 30);
 
-    let sortedNames = slicedNames.sort((a, b) => {
-      let step = 0;
-    });
+    setSuggestion(slicedNames);
+  };
 
-    setSuggestion(sortedNames);
+  const handleClick = (e) => {
+    let value = e.target.innerText;
+    setSearchValue(value);
   };
 
   const suggestedElements = suggestion.map((value, index) => (
-    <li key={index}>{value}</li>
+    <li onClick={handleClick} key={index}>
+      {value}
+    </li>
   ));
 
   return (

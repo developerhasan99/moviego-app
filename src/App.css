@@ -41,7 +41,6 @@ body {
 }
 
 .app_bg {
-  background-image: url(/src/assets/feature-item.jpg);
   background-position: center;
   background-size: cover;
   background-color: var(--color-dark);
