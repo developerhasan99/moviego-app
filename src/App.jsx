@@ -18,18 +18,20 @@ function App() {
 
   return (
     <>
-      <div className="content_wrapper">
-        <div className="App">
-          <Header />
-          <div className="content_card">
-            <MovieFrame />
-            <Searchbar />
-            <Attempts
-              remainingAttempts={remainingAttempts}
-              failedAttepts={failedAttepts}
-            />
+      <div className="app_bg">
+        <div className="content_wrapper">
+          <div className="App">
+            <Header />
+            <div className="content_card">
+              <MovieFrame />
+              <Searchbar />
+              <Attempts
+                remainingAttempts={remainingAttempts}
+                failedAttepts={failedAttepts}
+              />
+            </div>
+            <Footer />
           </div>
-          <Footer />
         </div>
       </div>
     </>

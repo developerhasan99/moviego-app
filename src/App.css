@@ -2,7 +2,6 @@
   --color-dark: #0f172a;
   --bg-gradient: linear-gradient(to right, #ff5c00 0%, #f6a42b 100%);
   --font-fat: "Anton", sans-serif;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -36,12 +35,16 @@ body {
   font-family: "Raleway", sans-serif;
 }
 
-.content_wrapper {
-  min-height: 100vh;
-  background-color: var(--color-dark);
+.app_bg {
   background-image: url(/src/assets/feature-item.jpg);
   background-position: center;
   background-size: cover;
+  background-color: var(--color-dark);
+}
+
+.content_wrapper {
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .App {
@@ -96,12 +99,12 @@ header button {
 }
 
 header button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .content_card {
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   backdrop-filter: blur(3px);
 }
@@ -186,6 +189,6 @@ header button:hover {
   padding: 0 5px;
   border-radius: 3px;
   margin-top: 3px;
-  font-family: "Anton", sans-serif;
+  font-family: var(--font-fat);
   background-image: var(--bg-gradient);
 }
