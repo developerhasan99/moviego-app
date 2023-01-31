@@ -7,6 +7,7 @@ import Footer from "./Components/Footer";
 import "./App.css";
 
 function App() {
+  const [searchValue, setSearchValue] = useState("");
   const [remainingAttempts, setRemainingAttempts] = useState(5);
   const [failedAttepts, setFailedAttepts] = useState([
     "Avengers",
@@ -24,7 +25,10 @@ function App() {
             <Header />
             <div className="content_card">
               <MovieFrame />
-              <Searchbar />
+              <Searchbar
+                setSearchValue={setSearchValue}
+                searchValue={searchValue}
+              />
               <Attempts
                 remainingAttempts={remainingAttempts}
                 failedAttepts={failedAttepts}
