@@ -1,59 +1,60 @@
 import { useEffect, useState } from "react";
+import Container from "./Components/Container";
 import Header from "./Components/Header";
 import MovieFrame from "./Components/MovieFrame";
 import Searchbar from "./Components/Searchbar";
 import Attempts from "./Components/Attempts";
 import Footer from "./Components/Footer";
-
-// import bg/img images
-import img1 from "./assets/bg/img1.jpg";
-import img2 from "./assets/bg/img2.jpg";
-import img3 from "./assets/bg/img3.avif";
-
-import "./App.css";
+import Result from "./Components/Result";
 
 function App() {
-  const [bgImg, setBgImg] = useState("");
-  const [searchValue, setSearchValue] = useState("");
-  const [remainingAttempts, setRemainingAttempts] = useState(5);
-  const [failedAttepts, setFailedAttepts] = useState([
-    "Avengers",
-    "Iron man",
-    "Black wido",
-    "Hulk",
-    "Abomination",
-  ]);
+  const [state, setState] = useState({
+    frameUrl: "https://framed.wtf/images/314/001.jpeg?w=1920&q=75",
+    movieName: "Avengers",
+    wins: false,
+    remainingAttempts: 5,
+    searchValue: "",
+    failedAttepts: [],
+  });
 
-  let images = [img1, img2, img3];
+  const compareUserData = (userData) => {
+    if (userData.toLowerCase() !== state.movieName.toLowerCase()) {
+      setState({
+        ...state,
+        remainingAttempts: state.remainingAttempts - 1,
+        failedAttepts: [...state.failedAttepts, userData],
+        searchValue: "",
+      });
+      return;
+    }
 
-  useEffect(() => {
-    let imgNumber = Math.floor(Math.random() * 3);
-
-    setBgImg(`url(${images[imgNumber]})`);
-  }, []);
+    setState({ ...state, wins: true });
+  };
 
   return (
-    <>
-      <div className="app_bg" style={{ backgroundImage: bgImg }}>
-        <div className="content_wrapper">
-          <div className="App">
-            <Header />
-            <div className="content_card">
-              <MovieFrame />
-              <Searchbar
-                setSearchValue={setSearchValue}
-                searchValue={searchValue}
-              />
-              <Attempts
-                remainingAttempts={remainingAttempts}
-                failedAttepts={failedAttepts}
-              />
-            </div>
-            <Footer />
-          </div>
-        </div>
+    <Container>
+      <Header />
+      <div className="content_card">
+        {state.wins ? (
+          <Result state={state} setState={setState} />
+        ) : (
+          <>
+            <MovieFrame frameUrl={state.frameUrl} />
+            <Searchbar
+              state={state}
+              setState={setState}
+              compareUserData={compareUserData}
+            />
+            <Attempts
+              state={state}
+              setState={setState}
+              compareUserData={compareUserData}
+            />
+          </>
+        )}
       </div>
-    </>
+      <Footer />
+    </Container>
   );
 }
 

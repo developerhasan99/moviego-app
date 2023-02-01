@@ -1,10 +1,7 @@
-export default function MovieFrame() {
+export default function MovieFrame({ frameUrl }) {
   return (
     <div className="frame_wrapper">
-      <img
-        src="https://framed.wtf/images/314/001.jpeg?w=1920&q=75"
-        alt="Frame Image"
-      />
+      <img src={frameUrl} alt="Frame Image" />
     </div>
   );
 }

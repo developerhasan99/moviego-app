@@ -1,44 +1,33 @@
 import { useState } from "react";
 import axios from "axios";
-import { movieNames } from "../utils/movieNames";
 
-export default function ({ searchValue, setSearchValue }) {
+export default function ({ state, setState, compareUserData }) {
   const [suggestion, setSuggestion] = useState([]);
 
   const handleChange = async (e) => {
     let userData = e.target.value;
-    setSearchValue(userData);
-
-    return;
+    setState({ ...state, searchValue: userData });
 
     try {
       // Axios GET request
-      let queryUrl = `/api/search/a`;
+      let queryUrl = `http://143.110.166.202:8000/search/a/`;
 
       let queryResponse = await axios.get(queryUrl);
+
+      console.log(queryResponse);
     } catch (error) {
       throw error;
     }
+  };
 
-    let filterdMovies = [];
-
-    if (userData) {
-      filterdMovies = movieNames.filter((data) => {
-        //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
-        return data
-          .toLocaleLowerCase()
-          .startsWith(userData.toLocaleLowerCase());
-      });
-    }
-
-    let slicedNames = filterdMovies.slice(0, 30);
-
-    setSuggestion(slicedNames);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    compareUserData(e.target.movieName.value);
   };
 
   const handleClick = (e) => {
     let value = e.target.innerText;
-    setSearchValue(value);
+    compareUserData(value);
   };
 
   const suggestedElements = suggestion.map((value, index) => (
@@ -48,17 +37,22 @@ export default function ({ searchValue, setSearchValue }) {
   ));
 
   return (
-    <form className="search_form">
-      <input
-        onChange={handleChange}
-        value={searchValue}
-        type="text"
-        placeholder="Search for movie..."
-        autoComplete="off"
-      />
-      {suggestion.length > 0 && (
-        <ul className="suggestion">{suggestedElements}</ul>
+    <>
+      {state.remainingAttempts > 0 && (
+        <form onSubmit={handleSubmit} className="search_form">
+          <input
+            onChange={handleChange}
+            value={state.searchValue}
+            type="text"
+            name="movieName"
+            placeholder="Search for movie..."
+            autoComplete="off"
+          />
+          {suggestion.length > 0 && (
+            <ul className="suggestion">{suggestedElements}</ul>
+          )}
+        </form>
       )}
-    </form>
+    </>
   );
 }

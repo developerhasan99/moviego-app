@@ -48,10 +48,10 @@ body {
 
 .content_wrapper {
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.App {
+.container {
   width: 100%;
   max-width: 550px;
   margin: auto;
@@ -180,6 +180,10 @@ header button:hover {
   font-style: italic;
 }
 
+.attempts .attempts_end {
+  color: rgb(202, 7, 7);
+}
+
 .failed_attempts {
   min-height: 300px;
 }
@@ -211,6 +215,58 @@ header button:hover {
   top: 12px;
   left: 10px;
   content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>');
+}
+
+.congreats {
+  font-size: 40px;
+  line-height: 1.2;
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.resutMovieName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resutMovieName h2 {
+  color: #fff;
+  font-size: 30px;
+  margin: 0.5rem 0;
+}
+
+.resutMovieName button {
+  font-size: 17px;
+  border: 0;
+  background-image: var(--bg-gradient);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.googleBtn {
+  color: #0f172a;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: center;
+  gap: 5px;
+  padding: 0.35rem;
+  border-radius: 5px;
+  border: #ddd 1px solid;
+  transition: 0.3s ease;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.googleBtn:hover {
+  background-color: #ddd;
 }
 
 footer {
