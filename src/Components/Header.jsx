@@ -7,8 +7,10 @@ import helpIcon from "../assets/help-circle.svg";
 export default function Header() {
   return (
     <header>
-      <div className="logo_wrapper">
-        <a href="/">MovieGo!</a>
+      <a className="logo" href="/">
+        MovieGo!
+      </a>
+      {/* <div className="logo_wrapper">
         <button>
           <img src={heartIcon} alt="Support" aria-label="Support" />
         </button>
@@ -26,7 +28,7 @@ export default function Header() {
         <button>
           <img src={helpIcon} alt="Help" aria-label="Help" />
         </button>
-      </div>
+      </div> */}
     </header>
   );
 }

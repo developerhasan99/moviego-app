@@ -1,13 +1,24 @@
 import { useState } from "react";
+import axios from "axios";
 import { movieNames } from "../utils/movieNames";
 
 export default function ({ searchValue, setSearchValue }) {
   const [suggestion, setSuggestion] = useState([]);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     let userData = e.target.value;
-
     setSearchValue(userData);
+
+    return;
+
+    try {
+      // Axios GET request
+      let queryUrl = `/api/search/a`;
+
+      let queryResponse = await axios.get(queryUrl);
+    } catch (error) {
+      throw error;
+    }
 
     let filterdMovies = [];
 
