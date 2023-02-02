@@ -8,7 +8,7 @@ export default function Attempts({ state, setState }) {
       {state.remainingAttempts > 0 ? (
         <p>Remaining Attempts: {state.remainingAttempts}</p>
       ) : (
-        <p className="attempts_end">All Attempts over!</p>
+        <p className="attempts_end">Your daily attempts is over!</p>
       )}
       <div className="failed_attempts">
         {state.failedAttepts.length > 0 && <h3>Failed Attempts:</h3>}

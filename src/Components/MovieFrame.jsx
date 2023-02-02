@@ -1,7 +1,11 @@
 export default function MovieFrame({ frameUrl }) {
   return (
     <div className="frame_wrapper">
-      <img src={frameUrl} alt="Frame Image" />
+      {frameUrl ? (
+        <img src={frameUrl} alt="Frame Image" />
+      ) : (
+        <div className="skeleton"></div>
+      )}
     </div>
   );
 }

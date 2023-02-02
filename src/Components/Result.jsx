@@ -7,7 +7,7 @@ export default function Result({ state, setState }) {
 
   return (
     <>
-      <MovieFrame frameUrl="https://framed.wtf/images/314/001.jpeg?w=1920&q=75" />
+      <MovieFrame frameUrl={state.frameUrl} />
       <h1 className="congreats">Congratulation!</h1>
       <div className="resutMovieName">
         <h2>{state.movieName}</h2>

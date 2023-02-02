@@ -1,9 +1,12 @@
-import { useState } from "react";
 import axios from "axios";
 
-export default function ({ state, setState, compareUserData }) {
-  const [suggestion, setSuggestion] = useState([]);
-
+export default function ({
+  state,
+  setState,
+  suggestion,
+  setSuggestion,
+  compareUserData,
+}) {
   const handleChange = async (e) => {
     let userData = e.target.value;
     setState({ ...state, searchValue: userData });
@@ -13,8 +16,11 @@ export default function ({ state, setState, compareUserData }) {
       let queryUrl = `http://143.110.166.202:8000/search/a/`;
 
       let queryResponse = await axios.get(queryUrl);
-
-      console.log(queryResponse);
+      if (state.searchValue !== "") {
+        setSuggestion(queryResponse.data.result);
+      } else {
+        setSuggestion([]);
+      }
     } catch (error) {
       throw error;
     }
@@ -22,6 +28,7 @@ export default function ({ state, setState, compareUserData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!e.target.movieName.value) return;
     compareUserData(e.target.movieName.value);
   };
 

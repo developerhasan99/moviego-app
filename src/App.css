@@ -117,12 +117,35 @@ header button:hover {
   width: 100%;
   height: auto;
   border-radius: 5px;
+  aspect-ratio: 16 /9;
 }
 
 .search_form {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   position: relative;
+}
+
+.skeleton {
+  width: 100%;
+  aspect-ratio: 16 /9;
+  background: linear-gradient(
+    120deg,
+    #e5e5e557 30%,
+    #f2f2f2 38%,
+    #f2f2f2 40%,
+    #e5e5e54f 48%
+  );
+  background-size: 300%;
+  background-position: 100% 0;
+  animation: anim 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes anim {
+  to {
+    background-position: -100% 0;
+  }
 }
 
 .search_form input {
@@ -181,7 +204,8 @@ header button:hover {
 }
 
 .attempts .attempts_end {
-  color: rgb(202, 7, 7);
+  font-size: 25px;
+  color: #f33a3a;
 }
 
 .failed_attempts {
