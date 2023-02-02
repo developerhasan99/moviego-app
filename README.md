@@ -63,3 +63,6 @@ Example:
 let queryUrl = `http://143.110.166.202:8000/search/a/`;
 with:
 let queryUrl = `http://143.110.166.202:8000/search/${userData}/`;
+
+
+Note: We have pre builded an instance, thats why you are seeing a dist folder on your project folder. Feel free to delete it and run thebuild command to build new one.
