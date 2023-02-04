@@ -1,4 +1,8 @@
-export default function Attempts({ state, setState }) {
+import { useGame } from "../context/gameContext";
+
+export default function Attempts() {
+  const { state } = useGame();
+
   const failedItems = state.failedAttepts.map((item, index) => {
     return <li key={index}>{item}</li>;
   });

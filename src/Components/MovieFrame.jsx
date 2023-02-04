@@ -1,8 +1,12 @@
-export default function MovieFrame({ frameUrl }) {
+import { useGame } from "../context/gameContext";
+
+export default function MovieFrame() {
+  const { state } = useGame();
+
   return (
     <div className="frame_wrapper">
-      {frameUrl ? (
-        <img src={frameUrl} alt="Frame Image" />
+      {state.frameUrl ? (
+        <img src={state.frameUrl} alt="Frame Image" />
       ) : (
         <div className="skeleton"></div>
       )}

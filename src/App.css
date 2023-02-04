@@ -113,11 +113,41 @@ header button:hover {
   backdrop-filter: blur(3px);
 }
 
+/* Home Page style */
+
+.home_wrapper h1 {
+  font-size: 30px;
+  line-height: 1.2;
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.home_wrapper .buttons_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 5rem 0;
+}
+
+.share_btn,
+.home_wrapper .buttons_wrapper a {
+  text-decoration: none;
+  color: #fff;
+  background-image: var(--bg-gradient);
+  padding: 8px 15px;
+  font-size: 22px;
+  border-radius: 7px;
+}
+
 .frame_wrapper img {
   width: 100%;
   height: auto;
   border-radius: 5px;
-  aspect-ratio: 16 /9;
+  aspect-ratio: 1/1;
 }
 
 .search_form {
@@ -128,7 +158,7 @@ header button:hover {
 
 .skeleton {
   width: 100%;
-  aspect-ratio: 16 /9;
+  aspect-ratio: 1/1;
   background: linear-gradient(
     120deg,
     #e5e5e557 30%,
@@ -247,8 +277,7 @@ header button:hover {
   background: var(--bg-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .resutMovieName {
@@ -259,8 +288,7 @@ header button:hover {
 
 .resutMovieName h2 {
   color: #fff;
-  font-size: 30px;
-  margin: 0.5rem 0;
+  font-size: 25px;
 }
 
 .resutMovieName button {
@@ -285,8 +313,8 @@ header button:hover {
   border-radius: 5px;
   border: #ddd 1px solid;
   transition: 0.3s ease;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .googleBtn:hover {

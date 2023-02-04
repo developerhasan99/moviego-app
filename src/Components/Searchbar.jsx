@@ -1,40 +1,54 @@
-import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { movieNames } from "../utils/movieNames";
+import { useGame } from "../context/gameContext";
 
-export default function ({
-  state,
-  setState,
-  suggestion,
-  setSuggestion,
-  compareUserData,
-}) {
+export default function () {
+  const { state, setState } = useGame();
+  const [searchValue, setSearchValue] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
+  const navigate = useNavigate();
+
   const handleChange = async (e) => {
     let userData = e.target.value;
-    setState({ ...state, searchValue: userData });
+    setSearchValue(userData);
 
-    try {
-      // Axios GET request
-      let queryUrl = `http://143.110.166.202:8000/search/a/`;
+    if (userData) {
+      let newSuggestions = movieNames.filter((value) =>
+        value.toLowerCase().startsWith(userData.toLowerCase())
+      );
 
-      let queryResponse = await axios.get(queryUrl);
-      if (state.searchValue !== "") {
-        setSuggestion(queryResponse.data.result);
-      } else {
-        setSuggestion([]);
-      }
-    } catch (error) {
-      throw error;
+      setSuggestion(newSuggestions);
     }
+
+    return;
+  };
+
+  const compareWinning = (data) => {
+    if (data.toLowerCase() !== state.movieName.toLowerCase()) {
+      setState({
+        ...state,
+        remainingAttempts: state.remainingAttempts - 1,
+        failedAttepts: [...state.failedAttepts, data],
+        searchValue: "",
+        progress: (state.progress += "❌"),
+      });
+      return;
+    }
+    setState({ ...state, wins: true });
+    navigate("/result", { replace: true });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!e.target.movieName.value) return;
-    compareUserData(e.target.movieName.value);
+    return;
   };
 
   const handleClick = (e) => {
+    setSearchValue("");
+    setSuggestion([]);
     let value = e.target.innerText;
-    compareUserData(value);
+    compareWinning(value);
   };
 
   const suggestedElements = suggestion.map((value, index) => (
@@ -49,7 +63,7 @@ export default function ({
         <form onSubmit={handleSubmit} className="search_form">
           <input
             onChange={handleChange}
-            value={state.searchValue}
+            value={searchValue}
             type="text"
             name="movieName"
             placeholder="Search for movie..."

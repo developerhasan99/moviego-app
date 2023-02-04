@@ -1,9 +1,11 @@
+import { NavLink } from "react-router-dom";
+
 export default function Header() {
   return (
     <header>
-      <a className="logo" href="/">
+      <NavLink className="logo" to="/">
         MovieGo!
-      </a>
+      </NavLink>
     </header>
   );
 }
