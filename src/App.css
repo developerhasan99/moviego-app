@@ -133,7 +133,10 @@ header button:hover {
   margin: 5rem 0;
 }
 
+.myresultbtn,
+.gobackBtn,
 .share_btn,
+.randomBtn,
 .home_wrapper .buttons_wrapper a {
   text-decoration: none;
   color: #fff;
@@ -141,6 +144,8 @@ header button:hover {
   padding: 8px 15px;
   font-size: 22px;
   border-radius: 7px;
+  border: 0;
+  cursor: pointer;
 }
 
 .frame_wrapper img {
@@ -233,6 +238,7 @@ header button:hover {
   font-style: italic;
 }
 
+.timeIsOver,
 .attempts .attempts_end {
   font-size: 25px;
   color: #f33a3a;
@@ -337,4 +343,85 @@ footer {
   margin-top: 3px;
   font-family: var(--font-fat);
   background-image: var(--bg-gradient);
+}
+
+.some_text {
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+.loading_wrapper {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.loading_wrapper img {
+  width: 100px;
+  height: auto;
+}
+
+.buttons_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.buttons_wrapper p {
+  margin: 0;
+  color: #fff;
+}
+
+.buttons_wrapper .timeBtn {
+  font-size: 18px;
+  background-color: transparent;
+  border: #eeeeee69 1px solid;
+  height: 30px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttons_wrapper .timeBtn.active,
+.buttons_wrapper .timeBtn:hover {
+  background-image: var(--bg-gradient);
+}
+
+.buttons_wrapper .timeBtn:first-child {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.buttons_wrapper .timeBtn:last-child {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.actions_wrapper {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.timerWrapper {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timerWrapper .cdtimer {
+  color: #fff;
+  font-size: 30px;
+}
+
+.direct_acess {
+  color: #fff;
+  font-size: 20px;
+}
+
+.myresultbuttonswrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 1rem;
 }

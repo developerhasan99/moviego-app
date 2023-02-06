@@ -1,13 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-const GameContext = createContext();
+const DailyContext = createContext();
 
-export function useGame() {
-  return useContext(GameContext);
+export function useDaily() {
+  return useContext(DailyContext);
 }
 
-export function GameProvider({ children }) {
+export function DailyProvider({ children }) {
   const [state, setState] = useState({
     frameUrl: "",
     movieName: "",
@@ -34,5 +34,7 @@ export function GameProvider({ children }) {
     setState,
   };
 
-  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
+  return (
+    <DailyContext.Provider value={value}>{children}</DailyContext.Provider>
+  );
 }
